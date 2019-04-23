@@ -10,7 +10,7 @@ class Config:
 
     #  email configurations
     MAIL_SERVER = 'mwaigalo5@gmail.com'
-    MAIL_PORT = 587
+    MAIL_PORT = 786
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
