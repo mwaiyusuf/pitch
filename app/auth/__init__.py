@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint     #Blueprint on authentication of our app request
 
 auth = Blueprint('auth',__name__)
 
