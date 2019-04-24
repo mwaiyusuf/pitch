@@ -1,5 +1,5 @@
 # from . import db
-from werkzeug.security import generate_password_hash,check_password_hash
+from werkzeug.security import generate_password_hash,check_password_hash  #wekzeug provides hashing  
 from flask_login import UserMixin
 
 from datetime import datetime
@@ -24,11 +24,12 @@ class User(UserMixin,db.Model):
     password_hash = db.Column(db.String(255))
     pitches = db.relationship('Pitch', backref='user', lazy="dynamic")
     comments = db.relationship("Comment", backref="user", lazy="dynamic")
+  
+     pass_secure = db.Column(db.String(255))  #updating our db
 
-
-    @property
+    @property    #to create a write only class property 
     def password(self):
-        raise AttributeError('You cannot read the password attribute')
+        raise AttributeError('You cannot read the password attribute') #prevent User to access passwrd
 
     @password.setter
     def password(self, password):

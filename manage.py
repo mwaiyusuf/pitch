@@ -9,7 +9,7 @@ app = create_app('development')
 # app = create_app('test')
 
 manager = Manager(app)
-migrate = Migrate(app,db)
+migrate = Migrate(app,db) #we initialise Migrt and pass in db,app 
 # ,db
 
 manager.add_command('server',Server)
