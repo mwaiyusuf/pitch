@@ -2,8 +2,8 @@ from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from .forms import PitchForm,CommentForm,UpdateProfile
 from ..models import User,Pitch,Comment
-# from .. import db,photos
-# import markdown2
+from .. import db,photos
+import markdown2
 from flask_login import login_required, current_user
 import datetime
 
@@ -64,8 +64,8 @@ def new_pitch(uname):
                       date = date,
                       time = time)
 
-        # db.session.add(pitch)
-        # db.session.commit()
+        db.session.add(pitch)
+        db.session.commit()
 
         return redirect(url_for('main.pitches_category',category = category))
 
@@ -91,8 +91,8 @@ def new_comment(uname,pitch_id):
         date = date[0:10]
         new_comment = Comment(post_comment = comment, user = user, pitch = pitch,time = time, date = date )
 
-        # db.session.add(new_comment)
-        # db.session.commit()
+        db.session.add(new_comment)
+        db.session.commit()
 
         return redirect(url_for("main.display_comments", pitch_id=pitch.id))
     return render_template("new_comment.html", title = title_page,form = form,pitch = pitch)
@@ -133,8 +133,8 @@ def update_profile(uname):
     if form.validate_on_submit():
         user.bio = form.bio.data
 
-        # db.session.add(user)
-        # db.session.commit()
+        db.session.add(user)
+        db.session.commit()
 
         return redirect(url_for('.profile',uname=user.username))
 

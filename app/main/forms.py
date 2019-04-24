@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm #help us create a form class
-from wtforms import StringField,TextAreaField,SubmitField #help us av a textfield,text area and submit button
+from wtforms import StringField,TextAreaField,SubmitField,selectField #help us av a textfield,text area and submit button
 from wtforms.validators import  Required
 
  class PitchForm(FlaskForm):
