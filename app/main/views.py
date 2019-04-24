@@ -4,7 +4,7 @@ from .forms import PitchForm,CommentForm,UpdateProfile
 from ..models import User,Pitch,Comment
 from .. import db,photos
 import markdown2
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user  #redirect to login page-after checkin the user authentication
 import datetime
 
 
@@ -32,7 +32,7 @@ def pitches_category(category):
     else:
         pitches = Pitch.query.filter_by(category=category).order_by(Pitch.time.desc()).all()
 
-    return render_template('pitches.html',title = title,pitches = pitches)
+    return render_template('pitch.html',title = title,pitches = pitches)
 
 
 @main.route('/<uname>/new/pitch', methods=['GET','POST'])
@@ -113,7 +113,7 @@ def display_comments(pitch_id):
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
-
+#if no user is found ,stops request and returns a response
     if user is None:
         abort(404)
 
@@ -123,8 +123,8 @@ def profile(uname):
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
-def update_profile(uname):
-    user = User.query.filter_by(username = uname).first()
+def update_profile(uname):   #instantiate updateprifile form class
+    user = User.query.filter_by(username = uname).first()  #query db to find user
     if user is None:
         abort(404)
 
