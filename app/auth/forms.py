@@ -1,11 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField,BooleanField,ValidationError
-from wtforms.validators import Required,Email,EqualTo
+from wtforms import StringField,PasswordField,SubmitField,BooleanField,ValidationError #facilitate user input, render a checkbox in our form 
+from wtforms.validators import Required,Email,EqualTo   #email follows a proper email address structure and Equal compare 2 passwrd inmputs
 from ..models import User
 
 
 
-class RegistrationForm(FlaskForm):
+class RegistrationForm(FlaskForm):    #creating four inputs field
     email = StringField("Your Email Address",validators=[Required(),Email()])
     username = StringField("Enter your username",validators=[Required()])
     password = PasswordField("Password",validators=[Required(),EqualTo('password_confirm',message='Passwords must match')])
@@ -13,7 +13,7 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField("Sign Up")
 
 
-    def validate_email(self,data_field):
+    def validate_email(self,data_field):  #takes in dta field nd checks db 2 confrm there is no user wiht that email address
         if User.query.filter_by(email = data_field.data).first():
             raise ValidationError('There is an account with that email.')
 
