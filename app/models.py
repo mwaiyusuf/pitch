@@ -1,13 +1,12 @@
-# from . import db
+from . import db
 from werkzeug.security import generate_password_hash,check_password_hash  #wekzeug provides hashing  
-from flask_login import UserMixin
-
+from flask_login import UserMixin   #passin into our User model
 from datetime import datetime
 from . import login_manager
 
 
-@login_manager.user_loader
-def load_user(user_id):
+@login_manager.user_loader #decorator modifies the Load_user function
+def load_user(user_id):     #function that queries the db and gets user with that ID
     return User.query.get(int(user_id))
 
 
@@ -25,7 +24,7 @@ class User(UserMixin,db.Model):
     pitches = db.relationship('Pitch', backref='user', lazy="dynamic")
     comments = db.relationship("Comment", backref="user", lazy="dynamic")
   
-     pass_secure = db.Column(db.String(255))  #updating our db
+    pass_secure = db.Column(db.String(255))  #updating our db
 
     @property    #to create a write only class property 
     def password(self):
