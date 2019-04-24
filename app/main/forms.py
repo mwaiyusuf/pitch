@@ -1,15 +1,15 @@
 from flask_wtf import FlaskForm #help us create a form class
-from wtforms import StringField,TextAreaField,SubmitField,selectField #help us av a textfield,text area and submit button
+from wtforms import StringField,TextAreaField,SubmitField,SelectField #help us av a textfield,text area and submit button
 from wtforms.validators import  Required
 
- class PitchForm(FlaskForm):
+class PitchForm(FlaskForm):
 
     title = StringField('Pitch title')
-    category = SelectField('Pitch Category', choices=[('pickup-lines', 'pickup-lines'),
-                                                      ('motivational', 'motivational'),
-                                                      ('promotion', 'promotion'),
-                                                      ('funny', 'funny'),
-                                                      ('random', 'random')])
+    category = SelectField('Pitch Category', choices=[('politics', 'politics'),
+                                                      ('business', 'business'),
+                                                      ('sports', 'sports'),
+                                                      ('meme', 'meme'),
+                                                      ('art', 'art')])
     content = TextAreaField('Type Here')
     submit = SubmitField('Create Pitch')
 
