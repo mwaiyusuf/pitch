@@ -8,7 +8,7 @@ from ..email import mail_message
 
 
 @auth.route('/login',methods=['GET','POST'])
-def login():
+def login():        #login function to render a template file
     '''
     View Function to login users
     '''
