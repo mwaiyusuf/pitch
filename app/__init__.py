@@ -1,19 +1,19 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from config import config_options
-# from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from flask_uploads import UploadSet,configure_uploads,IMAGES
 from flask_mail import Mail
-# from flask_simplemde import SimpleMDE
+from flask_simplemde import SimpleMDE
 
 from flask_login import LoginManager
 
 
 
 bootstrap = Bootstrap()
-# db = SQLAlchemy()
+db = SQLAlchemy()
 mail = Mail()
-# simple = SimpleMDE()
+simple = SimpleMDE()
 
 
 login_manager = LoginManager()
@@ -27,7 +27,7 @@ photos = UploadSet('photos',IMAGES)
 def create_app(config_name):
 
     app = Flask(__name__)
-    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     # Creating the app configurations
 
@@ -36,7 +36,7 @@ def create_app(config_name):
 
     # Initializing flask extensions
     bootstrap.init_app(app)
-    # db.init_app(app)
+    db.init_app(app)
     login_manager.init_app(app)
     mail.init_app(app)
     simple.init_app(app)
