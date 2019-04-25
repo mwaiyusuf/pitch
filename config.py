@@ -17,9 +17,9 @@ class Config:
 
 
 
-    @staticmethod
-    def init_app(app):
-        pass
+    # @staticmethod
+    # def init_app(app):
+    #     pass
 
 
 class ProdConfig(Config):
@@ -33,7 +33,7 @@ class TestConfig(Config):
 
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:mwai@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:kiki@localhost/pitch'
     DEBUG = True
 
 config_options = {
