@@ -35,7 +35,9 @@ As a user I would like:
         
         $ git clone  https://github.com/mwaiyusuf/pitch
         $ cd pitch 
+## TDD
 
+python3.6 manage.py 
 ## Running the Application
 * To run the application, in your terminal:
 
