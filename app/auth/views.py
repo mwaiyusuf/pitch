@@ -41,9 +41,7 @@ def register():
 
         flash("You've been successfully registered!")
 
-        mail_message("Welcome to Pitch-Perfect","email/welcome_user",user.email,user=user)
-
-
+        # mail_message("Welcome to Pitch-Perfect","email/welcome_user",user.email,user=user)
 
         return redirect(url_for('auth.login'))
         
